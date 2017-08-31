@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Topic Modeling: ACM TEI</title>
+        <style>
+
+            @import url(support/horizon.css);
+
+        </style>
+        <script type="text/javascript" src="support/d3.js"></script>
+        <script type="text/javascript" src="support/innersvg.js"></script>
+        <script type="text/javascript" src="support/d3.layout.cloud.js"></script>
+        <script type="text/javascript" src="support/cubism.v1.js"></script>
+
+        <link type="text/css" rel="stylesheet" href="support/stream.css"/>
+
+        <script type="text/javascript" src="mallet_lda_tagsC2-61318d97.js"></script>
+
+        <script type="text/javascript" src="x3dom/x3dom.js"></script>
+        <script type="text/javascript" src="vkBeautify/jquery.1.5.0.js"></script>
+        <script type="text/javascript" src="vkBeautify/vkbeautify.js"></script>
+
+        <link type="text/css" rel="stylesheet" href="support/button.css"/>
+    </head>
+    <body>
+        <div id="popupLayer"></div>
+        <div id="chart">
+            <div id="controls">
+                <button class="first last" onclick="showMore()">
+                    More topics
+                </button>
+                <button class="first last" onclick="legendToggle()">
+                    Toggle legend
+                </button><p>
+                <button class="first last" onclick="reset()">
+                    Reset
+                </button>
+                    Export: 
+                <button class="first last" onclick="save()">
+                    PNG
+                </button>
+                <a class="first last" id="x3dexport" download="infophys.x3d">
+                    X3D
+                </a> 
+                <div id="searches">
+                </div> 
+            </div>
+         </div>
+        <script type="text/javascript">
+            //var link = d3.select("body").append("a").attr("id","link").attr("download","infophys.x3d").html("export to x3d"); 
+            //var link = d3.select(".controls").append("a").attr("id","x3dexport").attr("download","infophys.x3d").html("export to x3d"); 
+            var x3d = d3.select("body")
+            .append("x3d")
+            /*.attr("hidden",true)*/
+            .attr("id","x3d")
+            .attr( "height", "400px" )
+            .attr( "width", "100%" );
+
+            var scene = x3d.append("scene");
+            var graphscene = scene.append("transform")
+                .attr("translation","0.0 0.0 -0.25");
+            
+            // H3D device specifics
+            var deviceInfo = scene.append("DeviceInfo");
+            var falconDevice = deviceInfo.append("FalconDevice")
+                .attr("positionCalibration","100 0 0 0 0 100 0 0 0 0 5 0 0 0 0 1");
+            var ruspiniRenderer = falconDevice.append("RuspiniRenderer");
+            var shape = falconDevice.append("Shape")
+                .attr("containerField","stylus");
+            var appearance = shape.append("Appearance");
+            var material = appearance.append("Material");
+            var sphere = shape.append("Sphere")
+                .attr("radius",0.25);
+            
+            // Default viewpoint
+            /*var viewpoint = scene.append("Viewpoint")
+                .attr("position","0 0 1")
+                .attr("fieldofview",0.5)
+                .attr("orientation","0 0 1 0")
+                .attr("centerofrotation","0 0 0");*/
+
+        </script>
+        <script type="text/javascript" src="support/horizon.js"></script>
+        <script type="text/javascript" src="support/stream-horizon.js"></script>
+        <script type="text/javascript">
+            function updateExport() {
+
+                var x3delement = document.getElementById("x3d");
+                var serializer = new XMLSerializer();
+                var source = serializer.serializeToString(x3delement);
+
+                //Optional: prettify the XML with proper indentations
+                source = vkbeautify.xml(source);
+                //convert svg source to URI data scheme.
+                var url = "data:xml/xml;charset=utf-8,"+encodeURIComponent(source);
+
+                //set url value to a element's href attribute.
+                document.getElementById("x3dexport").href = url;
+            }
+            updateExport();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+svg {
+  font: 10px 'Helvetica', sans-serif;
+  background: white;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+  pointer-events: none;
+}
+
+.x.axis line, .y.axis line {
+  stroke: #fff;
+  stroke-width:1;
+}
+
+.x.axis path, .y.axis path {
+  display: none;
+}
+.x.axis .minor {
+  stroke-width: 1;
+  stroke-opacity: 0.3;
+}
+
+.axis text {
+  fill: #000;
+}
+button {
+  display: inline-block;
+}
+
+
+
+
+#controls {
+  position: fixed;
+}
+input {
+  /*display: block;*/
+}
+
+.search {
+  display: block;
+  clear: both;
+  padding: 5px 0px;
+}
+.searchLabel {
+  display: block;
+  float:left;
+  width: 100%;
+}
+.searchText {
+  float:left;
+  display:inline-block;
+}
+
+.searchAddRemove {
+  height: 20px;
+  width: 20px;
+  padding: 0px;
+  float: left;
+}
+.popupHolder {
+  display: none;
+  position: fixed;
+  white-space: nowrap;
+  background: rgba(255,255,255,0.8);
+  width: 250px;
+  height: 300px;
+  border: 1px solid gray;
+  overflow: auto;
+  color: black;
+}
+
+#popupLayer {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  pointer-events: all;
+}
