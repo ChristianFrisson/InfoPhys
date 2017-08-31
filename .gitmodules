@@ -1,0 +1,16 @@
+[submodule "H3DViewer/github-ChristianFrisson-H3DUtil"]
+	path = H3DViewer/github-ChristianFrisson-H3DUtil
+	url = https://github.com/ChristianFrisson/H3DUtil.git
+	branch = master
+[submodule "H3DViewer/github-ChristianFrisson-H3DCore"]
+	path = H3DViewer/github-ChristianFrisson-H3DCore
+	url = https://github.com/ChristianFrisson/H3DCore.git
+	branch = InfoPhys
+[submodule "H3DViewer/github-ChristianFrisson-H3DAPI"]
+	path = H3DViewer/github-ChristianFrisson-H3DAPI
+	url = https://github.com/ChristianFrisson/H3DAPI.git
+	branch = InfoPhys
+[submodule "H3DViewer/github-ChristianFrisson-HAPI"]
+	path = H3DViewer/github-ChristianFrisson-HAPI
+	url = https://github.com/ChristianFrisson/HAPI.git
+	branch = InfoPhys
